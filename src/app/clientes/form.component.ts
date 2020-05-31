@@ -35,9 +35,9 @@ export class FormComponent implements OnInit {
   {
     console.log(this.cliente);
     //Registrar el observable
-    this.clienteService.create(this.cliente).subscribe(cliente => {
+    this.clienteService.create(this.cliente).subscribe(json => {
         this.router.navigate(['/clientes']) //Redirigir a clientes para ver el resultado del create
-        swal('Nuevo cliente', `Cliente ${cliente.nombre} creado con éxito!`,'success') //Alerta
+        swal('Nuevo cliente', `${json.mensaje}: ${json.cliente.nombre}`,'success') //Alerta
       }
     );
 
@@ -45,11 +45,11 @@ export class FormComponent implements OnInit {
 
   public update():void
   {
-    console.log(this.cliente);
+    console.log(this.cliente); //
     //Registrar el observable
-    this.clienteService.update(this.cliente).subscribe(cliente => {
+    this.clienteService.update(this.cliente).subscribe(json => {
         this.router.navigate(['/clientes']) //Redirigir a clientes para ver el resultado del create
-        swal('Cliente actualizado', `Cliente ${cliente.nombre} actualizado con éxito!`,'success') //Alerta
+        swal('Cliente actualizado', `${json.mensaje}: ${json.cliente.nombre}`,'success') //Alerta
       }
     );
 
